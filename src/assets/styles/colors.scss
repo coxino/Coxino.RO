@@ -1,0 +1,12 @@
+$purple-color:#7400b8;
+$purple-light-color:#563d7c;
+$wheat-color:#fdffb6;
+$blue-neon-color:#1f51ff;
+$dark-gray-color:#272640;
+$angle: "45deg";
+
+@mixin bg-gradient(){
+background: -webkit-gradient(linear, left top, left bottom,color-stop(0%,$purple-color), color-stop(100%, $blue-neon-color));
+background: -moz-gradient(linear, left top, left bottom, color-stop(0%,$purple-color), color-stop(100%, $blue-neon-color));
+background: -ms-gradient(linear, left top, left bottom, color-stop(0%,$purple-color), color-stop(100%, $blue-neon-color));
+}

@@ -1,0 +1,52 @@
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <div class="youtube-button" *ngIf="isLoggedin === false">
+            <label type="button" (click)="loginWithGoogle()" class="btn-google" ></label>
+        </div>
+    </div>
+    <div class="social-media-box" *ngIf="isLoggedin === true">
+        <div class="social-media-name">{{userName}}</div>
+        <img class="social-media-picture" [src]="photoURL">
+        <div class="social-media-name"> {{userEmail}} </div>
+        <div class="social-media-name"><b><i class="fa fa-money" aria-hidden="true"></i>{{coxiPoints | currency : ' ' : 'symbol' : '1.0-0'}}</b></div> 
+        <button class="btn btn-primary" style="display: block;width: 100px; margin: auto;" (click)="logout()" >Log Out <i class="fa fa-sign-out" aria-hidden="true"></i></button>        
+    </div>
+    <div class="container">
+        <div class="row">   
+            <div class="col-md-6 col-lg-4 mb-5" *ngFor="let item of GivewayItems; index as i;">
+                <div class="giveway-box" >
+                    
+                    <h4>{{item.givewayModel.name}}</h4>              
+                    <h5>{{item.givewayModel.description}}</h5> 
+                    <h6>{{item.time}}</h6> 
+                    <div class="sanse" *ngIf="isActive(item.givewayModel.endTime) === true">
+                        <p class="tikets">                           
+                            <b>Castigatori: {{item.givewayModel.winnersCount}}</b><br> 
+                            <b>Biletele tale:</b><i class="fa fa-ticket">{{item.userTikets}}</i><br>
+                            <b>Bilete vandute:</b><i class="fa fa-ticket">{{item.totalTikets}}</i><br>
+                            <b>Sansele Tale: </b>{{ item.userTikets / item.totalTikets * 100 | currency : ' ' : 'symbol' : '1.0-2'}} %</p>    
+                            <!-- <img src="/assets/img/paysafe.jpg"> -->
+                        </div>
+                        <div class="winners" *ngIf="isActive(item.givewayModel.endTime) == false">
+                            <p class="tikets">
+                                <b>Bilete vandute:</b><i class="fa fa-ticket">{{item.totalTikets}}</i><br>
+                            </p>  
+                            <h4>  Castigatori : </h4>
+                            <div class="winner"  *ngFor="let winner of item.winners; index as i;">
+                                <p class="tikets"> 
+                                   <b> {{i+1}}. {{winner}}  </b>
+                                </p>
+                                
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" style="width: 40%;margin: auto;display: block;margin-top: 10px;" (click)="buyTiket(item.givewayModel.id)" *ngIf="isActive(item.givewayModel.endTime)">Participa <i class="fa fa-money" aria-hidden="true"></i> {{item.givewayModel.price}}</button>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    

@@ -1,0 +1,41 @@
+@import "/src/assets/styles/colors.scss";
+.body{
+    @include bg-gradient();
+} 
+.custom-nav-bg 
+{ 
+    border-bottom: 2px solid #f72585;
+} 
+.navbar-dark .navbar-brand{
+    color: $wheat-color !important;
+}
+.nav-link {
+    color: $wheat-color !important;
+    &:hover{
+        text-decoration: underline !important; 
+    }
+}
+
+.video-title {
+    text-align: center;
+    color: $wheat-color !important;   
+}
+
+.footer{
+            position: relative;
+            padding: 10px 10px 0px 10px;
+            bottom: 0;
+            width: 100%;
+            background: $dark-gray-color;
+            color: $wheat-color !important;
+}
+.footer-site-logo{
+    color: $wheat-color !important;
+    font-size: 32px;
+    &:hover{
+        text-decoration: none;
+    }
+}
+.min100{
+    min-height: 1vh;
+}

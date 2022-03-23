@@ -1,0 +1,32 @@
+<div class="container contact-form">
+    <div class="contact-image">
+        <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+    </div>
+    <form   action="https://formspree.io/f/myyllede"
+            method="POST">
+        <h3>Lasă-mi un mesaj</h3>
+        
+        <h6 *ngIf="IsSubmited"><br>Mesaj primit iti voi raspunde in curand!</h6>
+       <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" name="Name" class="form-control" placeholder="Nume Prenume" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="email" name="_replyto" class="form-control" required placeholder="Adresa de email*" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Phone" class="form-control" placeholder="Telefon de contact" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="btnSubmit" class="btnContact" value="Trimite Mesaj" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <textarea name="message" class="form-control" required placeholder="Mesajul Tău*" style="width: 100%; height: 150px;"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

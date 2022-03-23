@@ -1,0 +1,44 @@
+
+<h1>{{isSubscribed}}</h1>
+<section class="page-section portfolio" id="portfolio"> 
+  <div class="container">
+    <div class="youtube-button" *ngIf="isLoggedin === false">
+      <label type="button" (click)="loginWithGoogle()" class="btn-google" ></label>
+    </div>
+  </div>
+  <div class="social-media-box" *ngIf="isLoggedin === true">
+    <div class="social-media-name">{{userName}}</div>
+    <img class="social-media-picture" [src]="photoURL">
+    <div class="social-media-name"> {{userEmail}} </div>
+    <div class="social-media-name"><b><i class="fa fa-money" aria-hidden="true"></i>{{coxiPoints | currency : ' ' : 'symbol' : '1.0-0'}}</b></div>     
+    <div class="col-md-3" style="margin: auto;">
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"><h3>Nume Superbet</h3></span>
+        </div>
+        <input type="text" class="form-control" placeholder="nume cont superbet" [(ngModel)]='superbetName' aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <button class="btn btn-primary" (click)="refreshPoints()" >Save</button>
+      </div>   
+      
+    </div>
+    <button class="btn btn-primary" style="display: block;width: 100px; margin: auto;" (click)="logout()" >Log Out <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+    <!-- <div class="social-media-name">{{userIP}}</div>     -->
+  </div>
+  <div style="max-width: 90vw; margin: auto;" class="container-flex">
+    <div class="row">
+    </div>  
+    <div class="row" >   
+      <div class="col-md-2" *ngFor="let item of ShopItems; index as i;">
+        <div class="giveway-box">
+          <h4> {{item.nume}}</h4>          
+          <h6> {{item.descriere}}</h6>
+          <h6>Stoc : {{item.stoc}}</h6>
+          <input class="form-control" *ngIf="item.requireAditional === true"  type="text" name="numeSpeci" placeholder="Scrie aici numele specialei"  [(ngModel)]='numeSpeci'> 
+          <img class="item-image"  [src]="item.imagine">
+          <br>
+          <button style="height: 40px; width:100%;" (click)="dorequest(item.itemID)" class="btn btn-primary"><i class="fa fa-money" aria-hidden="true"></i> {{item.pret | currency : ' ' : 'symbol' : '1.0-0'}}</button>
+        </div>
+      </div>    
+    </div> 
+  </div>
+</section>
