@@ -1,9 +1,18 @@
 <section class="page-section portfolio" id="portfolio">
-    <div class="container">
-        <div class="youtube-button" *ngIf="isLoggedin === false">
-            <label type="button" (click)="loginWithGoogle()" class="btn-google" ></label>
+    <div class="container-flex" *ngIf="isLoggedin === false">
+        <div class="row" style="margin: auto;">
+          <div class="col-6">
+        <div class="youtube-button"> 
+          <label type="button" (click)="loginWithGoogle()" class="btn-google" ></label></div>
+          </div>
+          <div class="col-6"> <twitch-login class="btn-google"
+            scopes="user:read:email+openid+analytics:read:games"
+            (callback)="out($event)"
+            label="Login Twitch 🚀"
+            >
+            </twitch-login></div>
         </div>
-    </div>
+      </div>
     <div class="social-media-box" *ngIf="isLoggedin === true">
         <div class="social-media-name">{{userName}}</div>
         <img class="social-media-picture" [src]="photoURL">
@@ -16,13 +25,15 @@
             <div class="col-md-6 col-lg-4 mb-5" *ngFor="let item of GivewayItems; index as i;">
                 <div class="giveway-box" >
                     
-                    <h4>{{item.givewayModel.name}}</h4>              
-                    <h5>{{item.givewayModel.description}}</h5> 
+                    <h5>{{item.givewayModel.name}}</h5>              
+                    <h6>{{item.givewayModel.description}}</h6>
+                    <h6>Poti cumpara maxim {{item.givewayModel.maxTikets}}</h6>
+
                     <h6>{{item.time}}</h6> 
                     <div class="sanse" *ngIf="isActive(item.givewayModel.endTime) === true">
                         <p class="tikets">                           
                             <b>Castigatori: {{item.givewayModel.winnersCount}}</b><br> 
-                            <b>Biletele tale:</b><i class="fa fa-ticket">{{item.userTikets}}</i><br>
+                            <b>Biletele tale:</b><i class="fa fa-ticket">{{item.userTikets}} / {{item.givewayModel.maxTikets}}</i><br>
                             <b>Bilete vandute:</b><i class="fa fa-ticket">{{item.totalTikets}}</i><br>
                             <b>Sansele Tale: </b>{{ item.userTikets / item.totalTikets * 100 | currency : ' ' : 'symbol' : '1.0-2'}} %</p>    
                             <!-- <img src="/assets/img/paysafe.jpg"> -->

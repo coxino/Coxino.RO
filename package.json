@@ -28,6 +28,7 @@
     "ngx-wheel": "^4.0.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
+    "twitch-login-sdk": "^2.0.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

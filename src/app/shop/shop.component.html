@@ -1,44 +1,55 @@
 
 <section class="page-section portfolio" id="portfolio"> 
-  <div class="container">
-    <div class="youtube-button" *ngIf="isLoggedin === false">
-      <label type="button" (click)="loginWithGoogle()" class="btn-google" ></label>
+  <div style="margin: auto; width: 300px;" *ngIf="isLoggedin === false">
+    <div class="row">
+      <div class="col-6">     
+        <label type="button" (click)="loginWithGoogle()" class="btn-google" ></label>
+      </div>
+      <div class="col-6"> <twitch-login
+        scopes="user:read:email+openid+analytics:read:games"
+        (callback)="out($event)"
+        label="Login Twitch 🚀"
+        >
+      </twitch-login></div>
     </div>
   </div>
   <div class="social-media-box" *ngIf="isLoggedin === true">
+    <button class="btn btn-primary" style="display: block;width: 100px; margin: auto;" (click)="logout()" >Log Out <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+    
     <div class="social-media-name">{{userName}}</div>
     <img class="social-media-picture" [src]="photoURL">
     <div class="social-media-name"> {{userEmail}} </div>
     <div class="social-media-name">COX : <b>{{coxiPoints | currency : ' ' : 'symbol' : '1.0-0'}}</b></div>     
-    <div class="social-media-name">Strange fise si cox pe live. 1 000 fise = 100cox</div>     
-    <div class="col-md-3" style="margin: auto;">
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Nume Superbet</span>
+    <!-- <div class="social-media-name">Strange fise si cox pe live. 1 000 fise = 100cox</div>      -->    
+    <div class="label" style="font-size: large; font-weight: bolder;" > Nume Superbet 
+      <div class="row">
+        <div class="col-10">
+          <input type="text" (keydown.enter)="refreshPoints()" class="form-control" placeholder="Scrie numele contului de Superbet si apasa enter sau Save" [(ngModel)]='superbetName' aria-label="Small" aria-describedby="inputGroup-sizing-sm">
         </div>
-        <input type="text" class="form-control" placeholder="nume cont superbet" [(ngModel)]='superbetName' aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-        <button class="btn btn-primary" (click)="refreshPoints()" >Save</button>
-      </div>   
-      
-    </div>
-    <button class="btn btn-primary" style="display: block;width: 100px; margin: auto;" (click)="logout()" >Log Out <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+        <div class="col-2">
+          <button class="btn btn-primary" (click)="refreshPoints()" >Save</button>
+        </div>
+      </div>        
+    </div>  
     <!-- <div class="social-media-name">{{userIP}}</div>     -->
   </div>
-  <div style="max-width: 90vw; margin: auto;" class="container-flex">
-    <div class="row">
-    </div>  
+  <div style="max-width: 90vw; margin: auto;" class="container-flex">    
     <div class="row" >   
-      <div class="col-md-2" *ngFor="let item of ShopItems; index as i;">
-        <div class="giveway-box">
-          <h4> {{item.nume}}</h4>          
-          <h6> {{item.descriere}}</h6>
-          <h6>Stoc : {{item.stoc}}</h6>
-          <input class="form-control" *ngIf="item.requireAditional === true"  type="text" name="numeSpeci" placeholder="Scrie aici numele specialei"  [(ngModel)]='numeSpeci'> 
-          <img class="item-image"  [src]="item.imagine">
+      <div class="col" *ngFor="let item of ShopItems; index as i;">
+        <div class="giveway-box"> 
+          <div class="details-box">
+            <h5> {{item.nume}}</h5>          
+            <h6> {{item.descriere}}</h6>          
+            <input class="form-control" *ngIf="item.requireAditional === true"  type="text" name="numeSpeci" placeholder="Scrie aici numele specialei"  [(ngModel)]='numeSpeci'>
+          </div> 
+          <div class="img-box">
+            <img class="item-image"  [src]="item.imagine">
+          </div>
           <br>
-          <button style="height: 40px; width:100%;" (click)="dorequest(item.itemID)" class="btn btn-primary"><i class="fa fa-money" aria-hidden="true"></i> {{item.pret | currency : ' ' : 'symbol' : '1.0-0'}}</button>
-        </div>
-      </div>    
-    </div> 
-  </div>
-</section>
+          <button (click)="dorequest(item.itemID)" class="btn btn-primary shopbtn"><i class="fa fa-money" aria-hidden="true"></i> {{item.pret | currency : ' ' : 'symbol' : '1.0-0'}} 
+            ({{item.stoc}})</button>
+          </div>
+        </div>    
+      </div> 
+    </div>
+  </section>

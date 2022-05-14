@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SiteConfig } from 'src/assets/statics/site_config';
 import { ContactComponent } from './contact/contact.component';
+import { CupaRomanieiCalificariComponent } from './cupa-romaniei-calificari/cupa-romaniei-calificari.component';
 import { CupaRomanieiComponent } from './cupa-romaniei/cupa-romaniei.component';
+import { Giveaway150Component } from './giveaway150/giveaway150.component';
 import { GiveawaysComponent } from './giveaways/giveaways.component';
 import { HomeComponent } from './home/home.component';
 import { PolicyComponent } from './policy/policy.component';
@@ -10,6 +12,7 @@ import { PostbackComponent } from './postback/postback.component';
 import { PromotiiSpecialeComponent } from './promotii-speciale/promotii-speciale.component';
 import { ShopComponent } from './shop/shop.component';
 import { TosComponent } from './tos/tos.component';
+import { TwitchLoginComponent } from './twitch-login/twitch-login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -23,6 +26,10 @@ const routes: Routes = [
   //################################################
   { path: "postback", component: PostbackComponent},
   { path: SiteConfig.tabCupa, component: CupaRomanieiComponent},
+  { path: SiteConfig.tabCupaCalificari, component:CupaRomanieiCalificariComponent },
+  {path: SiteConfig.tabGiveaway150, component:Giveaway150Component},
+
+  {path:"tw-login", component:TwitchLoginComponent}
 ];
 
 @NgModule({

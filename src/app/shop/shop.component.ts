@@ -35,6 +35,23 @@ export class ShopComponent implements OnInit {
   userEmail = "";
   userName = "";
   
+  public outCb:  any;
+   /**Twitch Callback Data **/
+   out = ($event: any) =>  {
+    this.outCb = $event;
+    console.log(JSON.stringify(this.outCb.login));
+    
+      var someDate = new Date();
+      var numberOfDaysToAdd = 1;
+      var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+      this.cookieService.set("userYoutubeID",this.outCb.login,new Date(result));
+      this.cookieService.set("photoURL",this.outCb.profile_image_url,new Date(result));
+      this.cookieService.set("userEmail",this.outCb.email,new Date(result));
+      this.cookieService.set("userName",this.outCb.display_name,new Date(result));
+
+      
+    location.reload();
+};
   constructor(private socialAuthService: SocialAuthService,private http: HttpClient,private cookieService: CookieService) { 
     this.defaultHeader.append('Access-Control-Allow-Origin', '*');
     this.defaultHeader.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -170,7 +187,7 @@ export class ShopComponent implements OnInit {
     
     SaveCookies() {
       var someDate = new Date();
-      var numberOfDaysToAdd = 6;
+      var numberOfDaysToAdd = 1;
       var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
       this.cookieService.set("userYoutubeID",this.userYoutubeID,new Date(result));
       this.cookieService.set("photoURL",this.photoURL,new Date(result));

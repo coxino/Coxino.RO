@@ -23,6 +23,23 @@ export class GiveawaysComponent implements OnInit {
   GiveawaysObserver = new Subject<Array<any>>();
   GivewayItems: any = [];
   
+  public outCb:  any;
+   /**Twitch Callback Data **/
+   out = ($event: any) =>  {
+    this.outCb = $event;
+    console.log(JSON.stringify(this.outCb.login));
+    
+      var someDate = new Date();
+      var numberOfDaysToAdd = 1;
+      var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+      this.cookieService.set("userYoutubeID",this.outCb.login,new Date(result));
+      this.cookieService.set("photoURL",this.outCb.profile_image_url,new Date(result));
+      this.cookieService.set("userEmail",this.outCb.email,new Date(result));
+      this.cookieService.set("userName",this.outCb.display_name,new Date(result));
+
+      
+    location.reload();
+};
   
   timer2$ = interval(1000);
   timer$ = interval(1000);

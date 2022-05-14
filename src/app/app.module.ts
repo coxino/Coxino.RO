@@ -24,6 +24,10 @@ import { CookieComponent } from './cookie/cookie.component';
 import { PostbackComponent } from './postback/postback.component';
 import { FormsModule } from '@angular/forms';
 import { CupaRomanieiComponent } from './cupa-romaniei/cupa-romaniei.component';
+import { CupaRomanieiCalificariComponent } from './cupa-romaniei-calificari/cupa-romaniei-calificari.component';
+import { TwitchLoginComponent } from './twitch-login/twitch-login.component';
+
+import  {TwitchLoginSdkModule} from "twitch-login-sdk";
 
 @NgModule({
   declarations: [
@@ -43,6 +47,8 @@ import { CupaRomanieiComponent } from './cupa-romaniei/cupa-romaniei.component';
     CookieComponent,
     PostbackComponent,
     CupaRomanieiComponent,
+    CupaRomanieiCalificariComponent,
+    TwitchLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,11 @@ import { CupaRomanieiComponent } from './cupa-romaniei/cupa-romaniei.component';
     SocialLoginModule,
     HttpClientModule,
     NgxWheelModule,
-    FormsModule  
+    FormsModule ,
+    TwitchLoginSdkModule.forRoot({ 
+      twitchId:  "nhtoulxff6s02iv9kw9ztfmmciqz2r", //<******* YOUR TWITCH_ID 👈
+      redirect:  "https://coxino.ro/shop" //<***** YOUR CALLBACK REDIRECT 👈
+  })
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

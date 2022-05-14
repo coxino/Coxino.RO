@@ -42,6 +42,9 @@ export class AppComponent implements OnInit {
           case SiteConfig.tabCupa:
           this.route = SiteConfig.tabCupaTitle;
           break;
+          case SiteConfig.tabGiveaway150:
+          this.route = SiteConfig.tabGiveaway150Title;
+          break;
           
           default: 
           this.route = SiteConfig.SiteName;
