@@ -28,6 +28,9 @@ import { CupaRomanieiCalificariComponent } from './cupa-romaniei-calificari/cupa
 import { TwitchLoginComponent } from './twitch-login/twitch-login.component';
 
 import  {TwitchLoginSdkModule} from "twitch-login-sdk";
+import { PopupComponent } from './popup/popup.component';
+import { WheelComponent } from './wheel/wheel.component';
+import { ContestComponent } from './contest/contest.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import  {TwitchLoginSdkModule} from "twitch-login-sdk";
     CupaRomanieiComponent,
     CupaRomanieiCalificariComponent,
     TwitchLoginComponent,
+    PopupComponent,
+    WheelComponent,
+    ContestComponent,
   ],
   imports: [
     BrowserModule,

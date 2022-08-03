@@ -1,0 +1,17 @@
+
+<div style="width: 88vw; margin: auto;">
+<ngx-wheel
+      #wheel
+      [width]=800
+      [height]=800
+      [disableSpinOnClick]='true'
+      [items]='items'
+      [innerRadius]='100'
+      [spinAmount]='6'
+      pointerStrokeColor='white'
+      pointerFillColor='black'
+      [idToLandOn]='idToLandOn'
+      (onSpinStart)='before()'
+      (onSpinComplete)='after()'>
+    </ngx-wheel>
+</div>

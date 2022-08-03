@@ -1,3 +1,22 @@
+.mb-only
+{
+    position:absolute;
+    font-size: 32px;
+    text-align: center;
+    background-color: rgb(255, 68, 0);
+}
+
+.absolute-wheel
+{
+    visibility: hidden;
+    z-index: 1;
+    position: fixed;
+    margin-top: -250px;
+    width: 150vw;
+    height: 150vh;
+    background-color: #8047b4;
+}
+
 .social-media-box
 {
     display: block;

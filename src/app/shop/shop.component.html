@@ -1,4 +1,12 @@
 
+
+<div class="absolute-wheel">
+  <app-wheel></app-wheel>
+</div>
+
+
+<app-popup style="width: 88vw;"></app-popup>
+
 <section class="page-section portfolio" id="portfolio"> 
   <div style="margin: auto; width: 300px;" *ngIf="isLoggedin === false">
     <div class="row">
@@ -19,37 +27,47 @@
     <div class="social-media-name">{{userName}}</div>
     <img class="social-media-picture" [src]="photoURL">
     <div class="social-media-name"> {{userEmail}} </div>
-    <div class="social-media-name">COX : <b>{{coxiPoints | currency : ' ' : 'symbol' : '1.0-0'}}</b></div>     
-    <!-- <div class="social-media-name">Strange fise si cox pe live. 1 000 fise = 100cox</div>      -->    
-    <div class="label" style="font-size: large; font-weight: bolder;" > Nume Superbet 
-      <div class="row">
-        <div class="col-10">
-          <input type="text" (keydown.enter)="refreshPoints()" class="form-control" placeholder="Scrie numele contului de Superbet si apasa enter sau Save" [(ngModel)]='superbetName' aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-        </div>
-        <div class="col-2">
-          <button class="btn btn-primary" (click)="refreshPoints()" >Save</button>
-        </div>
-      </div>        
-    </div>  
-    <!-- <div class="social-media-name">{{userIP}}</div>     -->
-  </div>
-  <div style="max-width: 90vw; margin: auto;" class="container-flex">    
-    <div class="row" >   
-      <div class="col" *ngFor="let item of ShopItems; index as i;">
-        <div class="giveway-box"> 
-          <div class="details-box">
-            <h5> {{item.nume}}</h5>          
-            <h6> {{item.descriere}}</h6>          
-            <input class="form-control" *ngIf="item.requireAditional === true"  type="text" name="numeSpeci" placeholder="Scrie aici numele specialei"  [(ngModel)]='numeSpeci'>
-          </div> 
-          <div class="img-box">
-            <img class="item-image"  [src]="item.imagine">
-          </div>
-          <br>
-          <button (click)="dorequest(item.itemID)" class="btn btn-primary shopbtn"><i class="fa fa-money" aria-hidden="true"></i> {{item.pret | currency : ' ' : 'symbol' : '1.0-0'}} 
-            ({{item.stoc}})</button>
-          </div>
-        </div>    
+    <div class="social-media-name">COX : <b>{{coxiPoints | currency : ' ' : 'symbol' : '1.0-0'}}</b></div>    
+    <div class="label"  *ngIf="isActive === false">Pentru a folosi site-ul trebuie sa-ti verifici email-ul
+      <div class="row"><div class="col-2">
+        <button class="btn btn-primary"  (click)="verificaContul()" >Verifica Contul</button>    
       </div> 
-    </div>
-  </section>
+    </div> 
+  </div>
+  
+  <!-- <div class="social-media-name">Strange fise si cox pe live. 1 000 fise = 100cox</div>      -->    
+  <div class="label" *ngIf="isActive === true" style="font-size: large; font-weight: bolder;" > Nume Superbet 
+    <div class="row">
+      <div class="col-10">
+        <input type="text" (keydown.enter)="saveSuperbetName()" class="form-control" placeholder="Scrie numele contului de Superbet si apasa enter sau Save" [(ngModel)]='superbetName' aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <div class="col-2">
+        <button class="btn btn-primary" (click)="saveSuperbetName()" >Save</button>
+      </div>
+    </div>        
+  </div>  
+  <!-- <div class="social-media-name">{{userIP}}</div>     -->
+</div>
+<div style="max-width: 88vw; margin: auto;" class="container-flex">    
+  <div class="row" >   
+    <div class="col" *ngFor="let item of ShopItems; index as i;">
+      <div class="giveway-box" *ngIf="item.isVisible === true"> 
+        <div class="details-box">
+          <h5> {{item.nume}}</h5>          
+          <h6> {{item.descriere}}</h6>          
+          <input class="form-control" *ngIf="item.requireAditional === true"  type="text" name="numeSpeci" placeholder="Scrie aici numele specialei"  [(ngModel)]='numeSpeci'>
+        </div> 
+        <div class="img-box">
+          <div class="mb-only" *ngIf="item.onlyMembers === true">
+            <a href="https://www.youtube.com/c/coxinotv/membership"> ! MEMBERS ONLY ! </a>
+          </div>
+          <img class="item-image"  [src]="item.imagine">
+        </div>
+        <br>
+        <button (click)="dorequest(item.itemID)" class="btn btn-primary shopbtn"><i class="fa fa-money" aria-hidden="true"></i> {{item.pret | currency : ' ' : 'symbol' : '1.0-0'}} 
+          (STOC {{item.stoc}})</button>
+        </div>
+      </div>    
+    </div> 
+  </div>
+</section>

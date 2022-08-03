@@ -13,6 +13,7 @@ export class SiteConfig {
   public static readonly tabCupa = 'crp';
   public static readonly tabCupaCalificari = 'crcalif';  
   public static readonly tabGiveaway150 = 'geuro';
+  public static readonly tabContests = 'contest';
   
   //transformTabs
   public static readonly tabHomeTitle = 'Acasă';
@@ -25,4 +26,5 @@ export class SiteConfig {
   public static readonly tabCupaTitle: 'Cupa Romaniei De Pacanele';
   public static readonly tabCupaCalificariTitle = 'Cupa Romaniei De Pacanele Calificari';
   public static readonly tabGiveaway150Title = 'Giveaway 150 E';
+  public static readonly tabContestsTitle = 'Concurs';
 }
