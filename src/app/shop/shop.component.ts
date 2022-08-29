@@ -35,6 +35,7 @@ export class ShopComponent implements OnInit {
   userEmail = "";
   userName = "";
   isActive = false;
+  _userEmail = "";
   
   public outCb:  any;
   /**Twitch Callback Data **/
@@ -130,6 +131,8 @@ export class ShopComponent implements OnInit {
       alert(xdata.message)
     });
   }
+
+
   
   // CheckIfUserIsSubs(id: any) {    
   //   var nextPage = "";
@@ -217,11 +220,31 @@ export class ShopComponent implements OnInit {
     var coxiUrl = "https://coxino.go.ro:5000/api/loyalty/userCoins";    
     this.http.post(coxiUrl,body,{headers:this.defaultHeader}).subscribe((xdata:any)=>{              
       this.coxiPoints = xdata.coxiCoins; 
+      this.userEmail = xdata.email;
       alert("Nume de utilizator superbet salvat!");
       this.isActive = xdata.isActive;
     });      
   }
   
+  saveEmailName(){
+    var body = {
+      //"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VybmFtZSI6ImNveGlubyAgICAiLCJQYXNzd29yZCI6ImNvc21pbjEyMzQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIiwibmJmIjoxNjQyNDgxMjQ1LCJleHAiOjE2NDMwODYwNDUsImlhdCI6MTY0MjQ4MTI0NSwiaXNzIjoiaHR0cDovL215c2l0ZS5jb20iLCJhdWQiOiJodHRwOi8vbXlhdWRpZW5jZS5jb20ifQ.2DjZdNm0UlGcnU2VXmA8zSan6Pch_1BKS4wybysiU2U",
+      "userID":this.userYoutubeID,
+      "username":"coxino",
+      "email":this._userEmail,
+      "ipadress":this.userIP,
+      "numeSuperbet":this.superbetName
+    }       
+    
+    this.requestShop();
+    var coxiUrl = "https://coxino.go.ro:5000/api/loyalty/userCoins";    
+    this.http.post(coxiUrl,body,{headers:this.defaultHeader}).subscribe((xdata:any)=>{              
+      this.coxiPoints = xdata.coxiCoins; 
+      this.userEmail = xdata.email;
+      alert("E-mail salvat!");
+      this.isActive = xdata.isActive;
+    });   
+  }
   
   refreshPoints() {   
     var body = {
@@ -239,13 +262,14 @@ export class ShopComponent implements OnInit {
     this.http.post(coxiUrl,body,{headers:this.defaultHeader}).subscribe((xdata:any)=>{              
       this.coxiPoints = xdata.coxiCoins;
       this.superbetName = xdata.numeSuperbet;
+      this.userEmail = xdata.email;
       this.isActive = xdata.isActive;
     });
   }
   
   
   
-  dorequest(itemID:string)
+  dorequest(itemID:string, numeItem:string)
   {
     if(this.userID == "" || this.userIP == "")
     {
@@ -260,6 +284,7 @@ export class ShopComponent implements OnInit {
       "email":this.userEmail,
       "ipadress":this.userIP,
       "itemID":itemID,
+      "numeItem":numeItem,
       "numeSpeciala":this.numeSpeci
     }
     var coxiUrl = "https://coxino.go.ro:5000/api/shop/cumpara";    

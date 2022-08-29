@@ -31,6 +31,8 @@ import  {TwitchLoginSdkModule} from "twitch-login-sdk";
 import { PopupComponent } from './popup/popup.component';
 import { WheelComponent } from './wheel/wheel.component';
 import { ContestComponent } from './contest/contest.component';
+import { SanitizePipe } from './sanitize.pipe';
+import { LinkifyPipe } from './linkify.pipe';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { ContestComponent } from './contest/contest.component';
     PopupComponent,
     WheelComponent,
     ContestComponent,
+    SanitizePipe,
+    LinkifyPipe,
   ],
   imports: [
     BrowserModule,

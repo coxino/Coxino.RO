@@ -1,10 +1,3 @@
-
-
-<div class="absolute-wheel">
-  <app-wheel></app-wheel>
-</div>
-
-
 <app-popup style="width: 88vw;"></app-popup>
 
 <section class="page-section portfolio" id="portfolio"> 
@@ -26,17 +19,30 @@
     
     <div class="social-media-name">{{userName}}</div>
     <img class="social-media-picture" [src]="photoURL">
-    <div class="social-media-name"> {{userEmail}} </div>
-    <div class="social-media-name">COX : <b>{{coxiPoints | currency : ' ' : 'symbol' : '1.0-0'}}</b></div>    
+
+    <div *ngIf="userEmail != ''" class="social-media-name"> {{userEmail}} </div>
+    <div *ngIf="userEmail == ''" class="social-media-name">
+      <div class="label">
+        <h5>Introdu un e-mail activ pentru verificarea contului</h5>
+      </div>
+      <div class="col">
+      <input style="max-width: 300px; margin:auto" type="text" (keydown.enter)="saveEmailName()" class="form-control" placeholder="email apasa enter pentru salvare" [(ngModel)]='_userEmail' aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <div class="col">
+        <button (click)="saveEmailName()" class="btn btn-primary">Salveaza</button>
+      </div>
+      </div>
+    <div class="social-media-name">GOLD : <b>{{coxiPoints | currency : ' ' : 'symbol' : '1.0-0'}}</b></div>    
     <div class="label"  *ngIf="isActive === false">Pentru a folosi site-ul trebuie sa-ti verifici email-ul
-      <div class="row"><div class="col-2">
+      <div class="row">
+        <div class="col-2">
         <button class="btn btn-primary"  (click)="verificaContul()" >Verifica Contul</button>    
-      </div> 
+        </div> 
     </div> 
   </div>
   
   <!-- <div class="social-media-name">Strange fise si cox pe live. 1 000 fise = 100cox</div>      -->    
-  <div class="label" *ngIf="isActive === true" style="font-size: large; font-weight: bolder;" > Nume Superbet 
+  <div class="label" *ngIf="isActive === true && userEmail != ''" style="font-size: large; font-weight: bolder;" > Nume Superbet 
     <div class="row">
       <div class="col-10">
         <input type="text" (keydown.enter)="saveSuperbetName()" class="form-control" placeholder="Scrie numele contului de Superbet si apasa enter sau Save" [(ngModel)]='superbetName' aria-label="Small" aria-describedby="inputGroup-sizing-sm">
@@ -64,7 +70,7 @@
           <img class="item-image"  [src]="item.imagine">
         </div>
         <br>
-        <button (click)="dorequest(item.itemID)" class="btn btn-primary shopbtn"><i class="fa fa-money" aria-hidden="true"></i> {{item.pret | currency : ' ' : 'symbol' : '1.0-0'}} 
+        <button (click)="dorequest(item.itemID, item.nume)" class="btn btn-primary shopbtn"><i class="fa fa-money" aria-hidden="true"></i> {{item.pret | currency : ' ' : 'symbol' : '1.0-0'}} 
           (STOC {{item.stoc}})</button>
         </div>
       </div>    
