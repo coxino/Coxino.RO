@@ -19,11 +19,13 @@
         font-weight: 900;
     }  
     a{
-        position: absolute;
+        position: fixed;
         bottom: -8px;
-        width: 50%;
-        left: 25%;
+        width: 80%;
+        left: 10%;
     }
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .checked{

@@ -33,6 +33,11 @@ import { WheelComponent } from './wheel/wheel.component';
 import { ContestComponent } from './contest/contest.component';
 import { SanitizePipe } from './sanitize.pipe';
 import { LinkifyPipe } from './linkify.pipe';
+import { UserComponentComponent } from './user-component/user-component.component';
+import { BattleRoyaleComponent } from './battle-royale/battle-royale.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ImageShowdownComponent } from './image-showdown/image-showdown.component';
+import { ImageShowdownComponent2 } from './image-showdown copy/image-showdown2.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +64,10 @@ import { LinkifyPipe } from './linkify.pipe';
     ContestComponent,
     SanitizePipe,
     LinkifyPipe,
+    UserComponentComponent,
+    BattleRoyaleComponent,
+    ImageShowdownComponent,
+    ImageShowdownComponent2
   ],
   imports: [
     BrowserModule,
@@ -67,6 +76,7 @@ import { LinkifyPipe } from './linkify.pipe';
     HttpClientModule,
     NgxWheelModule,
     FormsModule ,
+    Ng2SearchPipeModule,
     TwitchLoginSdkModule.forRoot({ 
       twitchId:  "nhtoulxff6s02iv9kw9ztfmmciqz2r", //<******* YOUR TWITCH_ID 👈
       redirect:  "https://coxino.ro/shop" //<***** YOUR CALLBACK REDIRECT 👈

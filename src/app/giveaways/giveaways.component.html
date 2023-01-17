@@ -1,32 +1,18 @@
-<section class="page-section portfolio" id="portfolio">
-    <div class="container-flex" *ngIf="isLoggedin === false">
-        <div class="row" style="margin: auto;">
-          <div class="col-6">
-        <div class="youtube-button"> 
-          <label type="button" (click)="loginWithGoogle()" class="btn-google" ></label></div>
-          </div>
-          <div class="col-6"> <twitch-login class="btn-google"
-            scopes="user:read:email+openid+analytics:read:games"
-            (callback)="out($event)"
-            label="Login Twitch 🚀"
-            >
-            </twitch-login></div>
-        </div>
-      </div>
-    <div class="social-media-box" *ngIf="isLoggedin === true">
-        <div class="social-media-name">{{userName}}</div>
-        <img class="social-media-picture" [src]="photoURL">
-        <div class="social-media-name"> {{userEmail}} </div>
-        <div class="social-media-name"><b><i class="fa fa-money" aria-hidden="true"></i>{{coxiPoints | currency : ' ' : 'symbol' : '1.0-0'}}</b></div> 
-        <button class="btn btn-primary" style="display: block;width: 100px; margin: auto;" (click)="logout()" >Log Out <i class="fa fa-sign-out" aria-hidden="true"></i></button>        
-    </div>
-    <div class="container">
+<section class="page-section portfolio" id="portfolio">    
+  <app-user-component></app-user-component>
+    <div class="container " >
         <div class="row">   
-            <div class="col-md-6 col-lg-4 mb-5" *ngFor="let item of GivewayItems; index as i;">
-                <div class="giveway-box" >
+            <div class="col-lg-6 mb-5 d-flex justify-content-center" *ngFor="let item of GivewayItems; index as i;">
+                <div class="giveway-box" >                    
+                    <h5>{{item.givewayModel.name}}</h5> 
+                    <div class="row ">
+                        <div class="col">
+                            <h6>
+                            <p [innerHTML]="item.givewayModel.description | linkify"></p>
+                        </h6>
+                        </div>
+                    </div>             
                     
-                    <h5>{{item.givewayModel.name}}</h5>              
-                    <h6>{{item.givewayModel.description}}</h6>
                     <h6>Poti cumpara maxim {{item.givewayModel.maxTikets}}</h6>
 
                     <h6>{{item.time}}</h6> 

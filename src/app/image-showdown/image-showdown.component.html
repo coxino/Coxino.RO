@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col">
+        <div class="promocard animate__animated" [ngClass]="{'animate__fadeInRight': playIn, 'animate__fadeOutLeft':playOut}">
+            <img src="/assets/img/promo/{{promo.image}}">
+            <span class="fa fa-star" [ngClass]="{'checked': promo.rating > 0}"></span>
+            <span class="fa fa-star" [ngClass]="{'checked': promo.rating > 1}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promo.rating > 2}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promo.rating > 3}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promo.rating > 4}"> </span>
+            <div class="title">
+                {{promo.name}}
+            </div>
+            <div class="descriere" [innerHTML]="promo.descriere | linkify">
+            </div>
+            <a href="{{promo.link}}" class="btn btn-danger">🎰 Mergi La Oferta 🎰</a>
+        </div>
+    </div>
+</div>

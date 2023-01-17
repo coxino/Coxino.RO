@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center">  
+  <!--
+    LOGIN BOX
+  -->
+  <div *ngIf="!_localUserServiceService.IsLoggedin()">
+    <div class="row">
+      <div class="col">     
+        <label type="button" (click)="loginWithGoogle()" class="btn-google" ></label>
+      </div>
+      <div class="col"> 
+        <twitch-login scopes="user:read:email+openid+analytics:read:games" (callback)="out($event)" label="Login Twitch 🚀"></twitch-login>        
+      </div>
+    </div>
+  </div>
+   <!--
+    LOGIN BOX
+  -->
+
+  <div class="social-media-box" *ngIf="_localUserServiceService.IsLoggedin()">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary" style="display: block;width: 100px; margin: auto;" (click)="logout()" >Log Out <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+       <h1> {{_localUserServiceService.LocalUser.userName}} </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img class="social-media-picture" [src]="_localUserServiceService.photoURL">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" *ngIf="_localUserServiceService.LocalUser.userEmail != ''"> <!---->
+       email:  {{_localUserServiceService.LocalUser.userEmail}}   
+      </div>
+      <div class="col" *ngIf="_localUserServiceService.LocalUser.userEmail == ''"> <!---->        
+          <div class="row">
+            <div class="col">
+              <input style="max-width: 300px; margin:auto" type="text" (keydown.enter)="saveEmailName()" class="form-control" placeholder="email apasa enter pentru salvare" [(ngModel)]='_userEmail' aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="col">
+              <button (click)="saveEmailName()" class="btn btn-primary">Salveaza</button>
+            </div>
+            <div class="label">
+              Introdu un e-mail activ pentru verificarea contului
+            </div>
+          </div>        
+        </div>
+    </div>
+    <div class="row">
+      <div class="col" *ngIf="_localUserServiceService.LocalUser.userEmailSecundar != ''"> <!---->
+       Email Secundar:  {{_localUserServiceService.LocalUser.userEmailSecundar}}   
+      </div>
+      <div class="col" *ngIf="_localUserServiceService.LocalUser.userEmailSecundar == ''"> <!---->        
+        <div class="row">
+          <div class="col">
+            Introdu un e-mail secundar 
+          </div>
+        </div>
+          <div class="row">            
+            <div class="col">
+              <input type="text" (keydown.enter)="saveEmailName()" class="form-control" placeholder="email apasa enter pentru salvare" [(ngModel)]='_userEmailSecundar' aria-label="Small" aria-describedby="inputGroup-sizing-sm">           
+            </div>
+            <div class="col-1">
+              <button (click)="saveEmailName()" class="btn btn-primary">Salveaza</button>
+            </div>           
+          </div>        
+        </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        GOLD : <b>{{_localUserServiceService.LocalUser.coxiPoints | currency : ' ' : 'symbol' : '1.0-0'}}</b>
+      </div>
+    </div>
+    <div  *ngIf="_localUserServiceService.LocalUser.isActive === false">
+      <div class="row">
+        <div class="col">
+          <div class="label">Pentru a folosi site-ul trebuie sa-ti verifici email-ul 
+        </div>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary justify-content-center"  (click)="verificaContul()" >Verifica Contul</button>    
+        </div> 
+      </div> 
+      </div>
+
+    <div class="row">
+      <div class="label" *ngIf="_localUserServiceService.LocalUser.isActive === true && _localUserServiceService.LocalUser.userEmail != ''" style="font-size: large; font-weight: bolder;" > Nume Superbet 
+        <div class="row">
+          <div class="col">
+            <input type="text" (keydown.enter)="saveSuperbetName()" class="form-control" placeholder="Scrie numele contului de Superbet si apasa enter sau Save" [(ngModel)]='_localUserServiceService.LocalUser.superbetName' aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+          </div>
+          <div class="col-2">
+            <button class="btn btn-primary" (click)="saveSuperbetName()" >Save</button>
+          </div>
+        </div>        
+      </div>  
+    </div>
+    
+  </div>

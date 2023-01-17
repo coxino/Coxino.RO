@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
+import { RequestServiceService } from '../Services/request-service.service';
 
 @Component({
   selector: 'app-promotii-speciale',
@@ -6,15 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./promotii-speciale.component.scss']
 })
 export class PromotiiSpecialeComponent implements OnInit {
-  mobile = false;
+ 
+  promotii : any[] = [];
 
-  constructor() { }
+  constructor(_requestService:RequestServiceService) {
+    _requestService.requestPromotions().subscribe((data:any)=>{
+      this.promotii = data;
+      this.promotii = this.promotii.sort((x,y)=>{
+        if(x.rating > y.rating)
+        return -1;
+        else
+        return 1
+      });
 
+    });
+
+
+    
+  }
+   
   ngOnInit(): void {
-    if (window.screen.width < 920) { // 768px portrait
-      this.mobile = true;
-      console.debug("is mobile");
-    }
+   
   }
 
 }

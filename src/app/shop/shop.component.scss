@@ -29,14 +29,7 @@
         font-weight:bolder;
         font-size: 22px;
     }
-    .social-media-picture
-    {
-        border-radius: 50%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 88px;
-    }
+    
     .social-media-points
     {
         font-size: 28px;
@@ -67,38 +60,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-
-
-.youtube-button
-{ height: 40px;
-    width: 150px;   
-    margin: auto !important;
-}
-.btn-google
-{
-    height: 40px;
-    width: 150px;   
-
-    color: #000000;
-    cursor: pointer;
-    font-weight: bold;
-    background: url('/assets/img/gbutton/btn_google_signin_dark_normal_web@2x.png');
-    background-size: contain;
-    background-repeat: no-repeat;  
-    &:hover
-    {
-        background: url('/assets/img/gbutton/btn_google_signin_dark_focus_web@2x.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-    &:active
-    {
-        background: url('/assets/img/gbutton/btn_google_signin_dark_pressed_web@2x.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
 }
 
 .label

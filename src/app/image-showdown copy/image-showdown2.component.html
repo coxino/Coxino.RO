@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col">
+        <div class="promocard animate__animated" [ngClass]="{'animate__bounceInLeft': playIn, 'animate__fadeOutLeft':playOut}">
+            <img src="/assets/img/promo/{{promotii[0].image}}">
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[0].rating > 0}"></span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[0].rating > 1}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[0].rating > 2}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[0].rating > 3}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[0].rating > 4}"> </span>
+            <div class="title">
+                {{promotii[0].name}}
+            </div>
+            <div class="descriere" [innerHTML]="promotii[0].descriere | linkify">
+            </div>
+            <a href="{{promotii[0].link}}" class="btn btn-danger animate__animated animate__pulse infinite">🎰 Mergi La Oferta 🎰</a>
+        </div>
+    </div>
+    <div class="col">
+        <div class="promocard animate__animated" [ngClass]="{'animate__bounceInDown': playIn, 'animate__fadeOutLeft':playOut}">
+            <img src="/assets/img/promo/{{promotii[1].image}}">
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[1].rating > 0}"></span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[1].rating > 1}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[1].rating > 2}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[1].rating > 3}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[1].rating > 4}"> </span>
+            <div class="title">
+                {{promotii[1].name}}
+            </div>
+            <div class="descriere" [innerHTML]="promotii[1].descriere | linkify">
+            </div>
+            <a href="{{promotii[1].link}}" class="btn btn-danger animate__animated animate__pulse infinite">🎰 Mergi La Oferta 🎰</a>
+        </div>
+    </div>
+    <div class="col">
+        <div class="promocard animate__animated" [ngClass]="{'animate__slideInRight': playIn, 'animate__fadeOutLeft':playOut}">
+            <img src="/assets/img/promo/{{promotii[2].image}}">
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[2].rating > 0}"></span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[2].rating > 1}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[2].rating > 2}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[2].rating > 3}"> </span>
+            <span class="fa fa-star" [ngClass]="{'checked': promotii[2].rating > 4}"> </span>
+            <div class="title">
+                {{promotii[2].name}}
+            </div>
+            <div class="descriere" [innerHTML]="promotii[2].descriere | linkify">
+            </div>
+            <a href="{{promotii[2].link}}" class="btn btn-danger animate__animated animate__pulse infinite">🎰 Mergi La Oferta 🎰</a>
+        </div>
+    </div>
+</div>

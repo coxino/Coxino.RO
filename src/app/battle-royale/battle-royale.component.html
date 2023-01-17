@@ -1,0 +1,76 @@
+<div class="container">
+<h1>Alege Un Joc Din Lista</h1>
+<h2>ETAPA 1 : Daca Bonuseaza Mergi In Etapa Urmatoare</h2>
+<h2>ETAPA 2 : Cel Mai Mare X Castiga!</h2>
+<h3>NU PARTICIPA SKYWIND SI NICI EGT</h3>
+<h3>PREMIILE POT SUFERII MODIFICARI - TOTALUL SPECIALELOR CUMPARATE PENTRU CHAT NU POATE FI MAI MIC DE 1 500 RON</h3>
+
+<app-user-component></app-user-component>
+
+<HR>
+<div class="row">
+    <button [ngClass]="{'green': !showClasament, 'red': showClasament}" class="btn btn-primary center" (click)="showClasament=false">CAUTA JOC</button>
+    <button  [ngClass]="{'green': showClasament, 'red': !showClasament}" class="btn btn-primary center" (click)="showClasament=true">CLASAMENT</button>
+  </div>
+<HR>
+
+<div class="form-group" *ngIf="!showClasament"> 
+    <label for="filtrare">Cauta Jocul sau Providerul</label>
+    <input
+    name="filtrare"
+      type="text"
+      class="form-control"
+      placeholder="Cauta Jocul sau Providerul"
+      [(ngModel)]="filterTerm"
+    />
+  </div>
+  <table class="table" *ngIf="!showClasament">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Imagine</th>
+        <th scope="col">Provider</th>
+        <th scope="col">Numele Jocului</th>
+        <th scope="col">Jucator</th>
+        <th scope="col">Puncte</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="filterTerm.length >=3">
+      <tr *ngFor="let game of allGames | filter: filterTerm">        
+        <td><img style="max-width: 50px;" [src]="game.game.image"></td>
+        <td>{{ game.game.provider }}</td>
+        <td>{{ game.game.name }}</td>        
+        <td *ngIf="game.playerName !== _localUserServiceService.LocalUser.userName">{{ game.playerName }}</td>
+        <td *ngIf="game.playerName === _localUserServiceService.LocalUser.userName"><button (click)="vinde(game.game.name)">VINDE JOCUL</button></td>
+        <td *ngIf="!game.playerName"><button (click)="cumpara(game.game.name)">Cumpara 4 000 GOLD</button></td>          
+        <td>{{ game.payOut / game.bet }}</td>                
+        </tr>
+    </tbody>
+  </table>
+  
+  <table class="table" *ngIf="showClasament">   
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Imagine</th>        
+        <th scope="col">Provider</th>
+        <th scope="col">Numele Jocului</th>
+        <th scope="col">Jucator</th>
+        <th scope="col">Puncte</th>
+        <th scope="col">Premiul</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of boughtGames | filter: filterTerm ; let i = index ">  
+        <td>{{i + 1}}. <img style="max-width: 50px;" [src]="game.game.image"></td>            
+        <td>{{ game.game.provider }}</td>
+        <td>{{ game.game.name }}</td>        
+        <td *ngIf="game.playerName != _localUserServiceService.LocalUser.userName">{{ game.playerName }}</td>
+        <td *ngIf="game.playerName == _localUserServiceService.LocalUser.userName"><button (click)="vinde(game.game.name)">VINDE</button></td>
+        <td *ngIf="game.payOut > 0">{{ game.payOut / game.bet }}</td>            
+        <td *ngIf="game.payOut == 0">0</td>                
+        <td *ngIf="game.payOut < 0">NECALIFICAT</td>                
+        <td>{{premii[i]}}</td>     
+      </tr>
+    </tbody>
+    <h1>Clasamentul nu e gata</h1>
+  </table>
+</div>

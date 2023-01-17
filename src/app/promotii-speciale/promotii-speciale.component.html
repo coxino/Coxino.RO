@@ -1,76 +1,20 @@
-<section class="page-section portfolio" id="portfolio">
-    <div class="container">
-        <a alt="bonus pacanele aparate slots mr bit frank casino slotv superbet coxino stream live" href="https://slotv.pro/ro/promo/land41?ref=c1b7927000443b1a6d7b9225f5970be7">
-            <div class="row">                      
-                <div class="col">
-                    <div class="promo-box">
-                        <a style="text-align: center;" href="https://slotv.pro/ro/promo/land41?ref=c1b7927000443b1a6d7b9225f5970be7"><h3>2 500 RON SlotV Casino</h3>
-                            <img style="object-fit: contain;" alt="bonus pacanele aparate slots mr bit frank casino slotv superbet coxino stream live" src="/assets/img/slotvlogo.png"></a>
-                        </div>    
-                    </div>
-                    
-                    
-                    <div class="col">
-                        <div class="promo-box">
-                            <div class="wide">
-                                <h3 *ngIf="!mobile"><p>Promotie SlotV</p></h3>
-                                <h6><span> Bonus de bun venit 100% PÂNĂ LA 2 500 RON + 500 Free Spins, spor la castiguri!</span></h6> 
-                                <h6>Licența nr. L1213854W001295 emisă de ONJN</h6>            
-                            </div>
-                        </div>
-                    </div>
+<div class="container">
+    <div class="row">
+        <div class="col mb-5" *ngFor="let promo of promotii;">    
+            <div class="promocard">
+                <img src="/assets/img/promo/{{promo.image}}">
+                <span class="fa fa-star" [ngClass]="{'checked': promo.rating > 0}"></span>
+                <span class="fa fa-star" [ngClass]="{'checked': promo.rating > 1}"> </span>
+                <span class="fa fa-star" [ngClass]="{'checked': promo.rating > 2}"> </span>
+                <span class="fa fa-star" [ngClass]="{'checked': promo.rating > 3}"> </span>
+                <span class="fa fa-star" [ngClass]="{'checked': promo.rating > 4}"> </span>
+                <div class="title">
+                    {{promo.name}}
                 </div>
-            </a>
-        </div>
-    </section>
-    
-    
-    <section class="page-section portfolio" id="portfolio">
-        <div class="container">
-            <a alt="bonus pacanele aparate slots mr bit frank casino slotv superbet coxino stream live" href="https://mrbitgame.com/promo/land23?ref=6f3881d37ae4652c20720ee7f2159835">                            
-                <div class="row">   
-                    <div class="col">
-                        <div class="promo-box">
-                            <a style="text-align: center;" href="https://mrbitgame.com/promo/land23?ref=6f3881d37ae4652c20720ee7f2159835"><h3>2 500 RON Mr. Bit</h3>
-                                <img style="object-fit: contain;" alt="bonus pacanele aparate slots mr bit frank casino slotv superbet coxino stream live" src="/assets/img/mrbitlogo.png"></a>
-                            </div>    
-                        </div>
-                        
-                        <div class="col">
-                            <div class="promo-box">
-                                <div class="wide">
-                                    <h3 *ngIf="!mobile"><p>Promotie Mr. BIT</p></h3>
-                                    <h6><span> Bonus de bun venit 100% PÂNĂ LA 2 500 RON + 500 Free Spins, spor la castiguri!</span></h6>  
-                                    <h6>Licența nr. L1213854W001295 emisă de ONJN</h6>         
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                <div class="descriere" [innerHTML]="promo.descriere | linkify">
+                </div>
+                <a href="{{promo.link}}" class="btn btn-danger">🎰 Mergi La Oferta 🎰</a>
             </div>
-        </section>
-        
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <a alt="bonus pacanele aparate slots mr bit frank casino slotv superbet coxino stream live" href="https://franksno.casa/promo/ro_bday?ref=70e75077d9bee6ef0f2a20775163e9dc">                                
-                    <div class="row">   
-                        <div class="col">
-                            <div class="promo-box">
-                                <a style="text-align: center;" alt="bonus pacanele aparate slots mr bit frank casino slotv superbet coxino stream live" href="https://franksno.casa/promo/ro_bday?ref=70e75077d9bee6ef0f2a20775163e9dc"><h3>2 500 RON Frank Casino</h3>
-                                    <img style="object-fit: contain;" alt="bonus pacanele aparate slots mr bit frank casino slotv superbet coxino stream live" src="/assets/img/franklogo.png"></a>
-                                </div>    
-                            </div>
-                            
-                            <div class="col">
-                                <div class="promo-box">
-                                    <div class="wide">
-                                        <h3 *ngIf="!mobile"><p>Promotie Frank Casino</p></h3>
-                                        <h6><span> Bonus de bun venit 100% PÂNĂ LA 2 500 RON + 500 Free Spins, spor la castiguri!</span></h6>   
-                                        <h6>Licența nr. L1213854W001295 emisă de ONJN</h6>           
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </section> 
+        </div>
+    </div>
+</div>

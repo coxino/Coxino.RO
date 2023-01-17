@@ -97,28 +97,64 @@
   width: 25em;
 }
 
-@media (min-width: 992px){
+@media screen and (min-width: 1550px) {
+  *{
+    max-width: 99vw;
+    margin: auto;
+  }
+  .responsive {
+    max-width: 80vw;
+    margin: auto;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 992px) {
+  *{
+    max-width: 99vw;
+    margin: auto;
+  }
+
+  .responsive {    
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .col{
+    margin: 0px;
+    max-width: 99%;
+  }
+
+  .giveway-box{
+    max-width: 80vw;
+    margin: auto !important;
+    margin-bottom: 12px !important;
+  }
+}
+
+
   .giveway-box{      
     background-color: rgba(65, 255, 239, 0.034);
     position: relative;
     align-content: center;   
-    width: 28rem;
-    height: 28rem;
-    margin: 1rem;
+    width: 420px !important;
+    height: 500px !important;
+    border-radius: 21px;
+
+    margin: 32px;
+
+    h5{
+      color: #f72585;
+      text-align: center;
+    }
     
-    border-radius: 12px;
-    // .wide {
-      //   margin-top: 25px;
-      //   margin-left: 50px;
-      //   position: absolute;
-      //   width: 55vw;
-      // }
       .details-box
       {
         margin: 0;
         width: 100% !important; 
         height: 30% !important;        
         overflow: hidden;
+        text-align: center;
       }
       
       .shopbtn
@@ -133,7 +169,7 @@
       {
         margin: 0;
         width: 100%; 
-        height: 58%;   
+        height: 48%;   
         overflow: hidden;
       }
       
@@ -144,80 +180,4 @@
         object-fit: cover;   
         border-radius: 4%; 
       }
-    }
-  }
-  
-  @media (max-width: 992px){
-    .giveway-box{      
-      
-      background-color: rgba(65, 255, 239, 0.034);
-      position: relative;
-      align-content: center;   
-      width: 88vw !important;
-      height: 128vw !important;
-      margin: 5%;
-      border-radius: 12px;
-      // .wide {
-        //   margin-top: 25px;
-        //   margin-left: 50px;
-        //   position: absolute;
-        //   width: 55vw;
-        // }
-        .details-box
-        {
-          margin: 0;
-          width: 100% !important; 
-          height: 35% !important;        
-          overflow: hidden;
-        }
-        
-        .shopbtn
-        {
-          margin: 0;
-          display: block;
-          width: 150px;
-          margin: auto;
-        }
-        
-        .img-box
-        {
-          margin: 0;
-          width: 100%; 
-          height: 58%;   
-          overflow: hidden;
-        }
-        
-        img
-        {       
-          width: 100%; 
-          max-height: 100%; 
-          object-fit: cover;   
-          border-radius: 4%; 
-        }    
-      }
-    }
-
-    h3
-    {
-      text-indent: 0px;
-      color: #f72585;    
-    }
-    h4
-    {
-      text-indent: 0px;
-      color: #1abc9c;    
-    }
-    h5
-    { 
-        text-align: center;
-        overflow: hidden;
-        text-shadow: 0px 0px 6px rgba(215, 112, 236, 0.411);
-        text-indent: 0px;
-        color: #f72585;
-    }      
-    h6
-    {text-align: center;
-      overflow: hidden;
-      text-indent: 0px;
-      color:wheat;
     }

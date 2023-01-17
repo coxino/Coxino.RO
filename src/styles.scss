@@ -2,3 +2,19 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "/src/assets/font-awesome-4.7.0/scss/font-awesome.scss";
 @import "/src/assets/styles/secondary.scss";
+
+.social-media-picture
+    {
+        border-radius: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 88px;
+    }
+
+    .center
+    {
+        height: 50px;
+        width: 200px;
+        margin: auto;
+    }
